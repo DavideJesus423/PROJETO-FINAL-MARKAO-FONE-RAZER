@@ -1,0 +1,35 @@
+body.fundo-preto {
+  background-color: #000000;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+main.conteudo-principal {
+  max-width: 900px;
+  margin: 40px auto 40px;
+  padding: 20px;
+  text-align: center; /* centraliza títulos */
+}
+
+.titulo-verde, h2 {
+  color: #44d62c; /* títulos e subtítulos em verde */
+}
+
+main.conteudo-principal p {
+  color: #ddd;
+  line-height: 1.6;
+  text-align: left; /* alinhamento a esqueda */
+  margin-bottom: 10px
+}
+
+h1 {
+  margin-bottom: 40px; /* maior espaçamento após o h1 */
+}
+
+h2 {
+  margin-bottom: 20px; /* espaçamento menor após o h2 */
+  text-align: left;
+}
+
