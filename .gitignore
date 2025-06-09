@@ -1,0 +1,46 @@
+# Arquivos compactados
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# Arquivos de Photoshop e design
+*.psd
+*.ai
+*.eps
+*.xcf
+
+# Vídeos (geralmente não é bom colocar em repositório)
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# Bancos de dados
+*.db
+*.sqlite
+*.sqlite3
+
+# Executáveis
+*.exe
+*.dll
+*.msi
+*.apk
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+
+# Pastas e arquivos de cache de editores
+.vscode/
+.idea/
+*.swp
+
+# Node.js (caso você use futuramente)
+node_modules/
+
+# Logs
+*.log
+
+# Outras pastas que você não queira subir (exemp

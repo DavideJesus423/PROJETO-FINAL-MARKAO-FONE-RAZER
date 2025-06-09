@@ -1,0 +1,720 @@
+/* === Reset básico e box-sizing para todos os elementos === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === 1. HTML e BODY ocupando 100% da largura e definindo fonte-padrão === */
+html,
+body {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background: black/*linear-gradient(to right, #b3e0ff, #d6b3ff);*/
+  
+}
+
+/* === 2. Contêiner principal que centraliza o conteúdo e limita largura ===
+   Em vez de usar um wrapper extra no HTML, aplicamos em cada seção. */
+
+/* 2.1. Seletor genérico para centralizar e limitar largura de seções principais */
+.section-wrapper {
+  width: 90%;           /* ocupa até 90% da viewport */
+  max-width: 1200px;    /* não ultrapassa 1200px em telas grandes */
+  margin: 0 auto;       /* centraliza horizontalmente */
+  padding: 0 20px;      /* respiro lateral em telas pequenas */
+}
+
+/* Você pode usar <div class="section-wrapper"> … </div> em volta de cada section 
+   ou simplesmente aplicar estas mesmas regras nos seletores específicos abaixo. */
+
+/* ================================
+   3. .container (CABEÇALHO / INTRO)
+   ================================ */
+    .container {
+    width: 100%;            /* 100% do width da .section-wrapper */
+    max-width: 900px;       /* limite para o bloco de introdução */
+    margin: 0 auto;         /* centraliza em telas maiores */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;        /* espaçamento vertical proporcional */
+    flex-wrap: wrap;        /* permite que o conteúdo quebre em telas pequenas */
+    }
+
+    /* Texto e botões dentro do cabeçalho */
+    .text-content {
+    flex: 1 1 50%;          /* ocupa até 50% do container, mas encolhe se necessário */
+    min-width: 280px;       /* evita ficar muito estreito */
+    }
+
+    .text-content h1 {
+    font-size: 2rem;
+    color: #00ff2a;
+    line-height: 1.2;
+    }
+
+    .text-content p {
+    margin-top: 10px;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #ffffff;
+    }
+
+    .buttons {
+    margin-top: 20px;
+    }
+
+    .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: background 0.3s, color 0.3s;
+    }
+
+    .btn-primary {
+    background: #00ff00;
+    color: #000;
+    font-weight: bold;
+    }
+
+    .btn-secondary {
+    background: #fff;
+    color: #333;
+    border: 2px solid #000;
+    }
+
+    .product-img {
+    flex: 1 1 40%;          /* ocupa até 40%, encolhe conforme necessário */
+    max-width: 400px;       /* limite de tamanho para a imagem */
+    width: 100%;
+    margin-top: 20px;
+    }
+
+/* ======================================
+   4. .esports-sound (SEÇÃO DESTACADA)
+   ====================================== */
+    .esports-sound {
+    width: 100%;
+    max-width: 1200px;
+    margin: 60px auto;      /* espaço acima e abaixo e centraliza */
+    padding: 60px 20px;     /* espaçamento interno proporcional */
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    }
+
+    .esports-sound h3 {
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    }
+
+    .esports-sound h1 {
+    color: #00ff00;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 15px 0;
+    }
+
+    .esports-sound p {
+    font-size: 1rem;
+    max-width: 800px;
+    line-height: 1.5;
+    margin: 0 auto;
+    }
+
+/* =====================================
+   5. .slider-comment (TEXTO INTERMEDIÁRIO)
+   ===================================== */
+    .slider-comment {
+    width: 100%;
+    max-width: 900px;
+    margin: 100px auto;      /* espaço acima e abaixo, centraliza */
+    text-align: center;
+    }
+
+    .slider-comment h2 {
+    color: #00ff00;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    }
+
+    .slider-comment p {
+    font-size: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+    color: #ffffff;
+    }
+
+/* =========================================
+   6. .image-slider (CARROSSEL DE IMAGENS)
+   ========================================= */
+    .image-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    margin-top: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .fade-slider {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;
+    }
+
+    .slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    }
+
+    .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+    object-fit: contain;
+    }
+
+    .slide.active {
+    opacity: 1;
+    position: relative;
+    }
+
+    /* Faça a estilização dos botões (‹ ›) conforme a necessidade via posição absoluta */
+    .image-slider .prev,
+    .image-slider .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 10px;
+    cursor: pointer;
+    }
+
+    .image-slider .prev {
+    left: 10px;
+    }
+
+    .image-slider .next {
+    right: 10px;
+    }
+
+/* ==================================================
+   7. .triforce-driver (FUNDO COM IMAGEM E OVERLAY)
+   ================================================== */
+    .triforce-driver {
+    width: 100%;
+    max-width: 1200px;
+    margin: 60px auto;
+    background-image: url('imagens/drive-audio.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;     /* altura fluida baseada no conteúdo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    position: relative;
+    color: #fff;
+    }
+
+    .triforce-driver::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    }
+
+    .overlay-content {
+    position: relative;
+    z-index: 1;              /* garante que fique acima do overlay */
+    max-width: 800px;
+    text-align: center;
+    padding: 30px;
+    }
+
+    .overlay-content h1 {
+    color: #00ff00;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    }
+
+    .overlay-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ddd;
+    }
+
+/* ============================================
+   8. .features-section (RECURSOS / CARDS)
+   ============================================ */
+    .features-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 60px auto;       /* espaçamento vertical e centraliza */
+    padding: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;               /* espaçamento entre cards */
+    }
+
+    .feature {
+    flex: 1 1 30%;           /* até 3 cards lado a lado em telas grandes */
+    min-width: 250px;        /* evita ficar muito pequeno */
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 6px;
+    }
+
+    .feature img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 15px;
+    }
+
+    .feature h2 {
+    color: #00ff00;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    }
+
+    .feature p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ccc;
+    margin-bottom: 10px;
+    }
+
+    .feature small {
+    display: block;
+    margin-top: 10px;
+    color: #888;
+    font-size: 0.875rem;
+    }
+
+/* ========================================================
+   9. .comparison-section (TABELA COMPARATIVA E IMAGENS)
+   ======================================================== */
+    .comparison-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px 40px;
+    }
+
+    .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #111;
+    color: #fff;
+    table-layout: fixed;
+    border-radius: 8px;
+    overflow: hidden;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+    border: 1px solid #444;
+    padding: 12px 10px;
+    text-align: center;
+    word-wrap: break-word;
+    }
+
+    .comparison-table .empty-header {
+    background-color: #000;
+    border-right: 1px solid #333;
+    padding: 0;
+    }
+
+    .comparison-table .category-cell {
+    background-color: #000;
+    color: #fff;
+    font-weight: 500;
+    width: 180px;
+    }
+
+    .comparison-table .product-image {
+    max-height: 120px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    }
+
+    .comparison-table .product-name {
+    background-color: #000;
+    color: #00ff00;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    padding-top: 8px;
+    }
+
+    /* ============================
+    10. .faq-section (PERGUNTAS)
+    ============================ */
+    .faq-section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px 40px;
+    }
+
+    .faq-section h2 {
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    }
+
+    .faq-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    }
+
+    .faq-item {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 6px;
+    }
+
+    .faq-item h3 {
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    }
+
+    .faq-item p {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    }
+
+    .faq-item small {
+    display: block;
+    color: #777;
+    font-size: 0.75rem;
+    margin-top: 8px;
+    }
+
+/* ================================
+   11. .footer (SEÇÃO DE RODAPÉ)
+   ================================ */
+    .footer {
+    width: 100%;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 20px;
+    background-color: #000;
+    color: #ccc;
+    border-radius: 6px;
+    }
+
+    .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    }
+
+    .footer-column {
+    flex: 1 1 220px;
+    min-width: 200px;
+    }
+
+    .footer-column h4 {
+    margin-bottom: 15px;
+    font-size: 1.125rem;
+    color: #44d62c;
+    }
+
+    .footer-column ul {
+    list-style: none;
+    }
+
+    .footer-column ul li {
+    margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+    }
+
+    .footer-column ul li a:hover {
+    color: #44d62c;
+    }
+
+    .footer-column p {
+    margin-bottom: 8px;
+    }
+
+    .footer-column .logo {
+    width: 150px;
+    margin-bottom: 15px;
+    }
+
+    .footer-column form {
+    display: flex;
+    flex-direction: column;
+    }
+
+    .footer-column input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #222;
+    color: #fff;
+    outline: none;
+    }
+
+    .footer-column input[type="email"]::placeholder {
+    color: #888;
+    }
+
+    .footer-column button {
+    padding: 10px;
+    border: 1px solid #44d62c;
+    background-color: transparent;
+    color: #44d62c;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+    }
+
+    .footer-column button:hover {
+    background-color: #44d62c;
+    color: #000;
+    }
+
+    .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    }
+
+    .footer-bottom p {
+    font-size: 0.875rem;
+    color: #888;
+    }
+
+    /* Imagens de certificações e métodos de pagamento */
+    .footer-certifications img,
+    .payment-methods img {
+    height: 30px;
+    margin: 0 5px;
+    }
+
+/* ===================================
+   12. MEDIA QUERIES PARA TELAS PEQUENAS
+   =================================== */
+
+    /* Até 1024px (tablets grandes / notebooks menores) */
+    @media (max-width: 1024px) {
+    .comparison-table th,
+    .comparison-table td {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+    .comparison-table .product-image {
+        max-height: 100px;
+    }
+    }
+
+    /* Até 768px (tablets / notebooks pequenos) */
+    @media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .text-content {
+        max-width: 100%;
+        text-align: center;
+    }
+    .product-img {
+        max-width: 80%;
+        margin: 20px auto 0;
+    }
+    .features-section {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px 0;
+    }
+    .feature {
+        flex: 1 1 100%;
+        min-width: auto;
+    }
+    .esports-sound,
+    .slider-comment,
+    .image-slider,
+    .triforce-driver,
+    .comparison-section,
+    .faq-section,
+    .footer {
+        padding: 40px 10px;
+        margin: 40px auto;
+    }
+    }
+
+    /* Até 480px (smartphones) */
+    @media (max-width: 480px) {
+    .wrapper,
+    .container,
+    .esports-sound,
+    .slider-comment,
+    .image-slider,
+    .triforce-driver,
+    .features-section,
+    .comparison-section,
+    .faq-section,
+    .footer {
+        width: 95%;
+    }
+
+    .slider-comment h2 {
+        font-size: 1.25rem;
+    }
+    .esports-sound h1 {
+        font-size: 2rem;
+    }
+    .esports-sound h3 {
+        font-size: 0.9rem;
+    }
+    .overlay-content h1 {
+        font-size: 1.75rem;
+    }
+    .overlay-content p {
+        font-size: 0.9rem;
+    }
+    .feature h2 {
+        font-size: 1.125rem;
+    }
+    .feature p {
+        font-size: 0.9rem;
+    }
+    .faq-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    .comparison-table {
+        font-size: 0.8rem;
+    }
+    .comparison-table .product-image {
+        max-height: 60px;
+    }
+    }
+
+/* ===================================
+   13. BARRA DE OFERTAS DA RAZER
+   =================================== */
+
+
+    /* BARRA DE OFERTA FIXA NO TOPO */
+    .top-offer-bar {
+        background-color: #111; /* fundo escuro */
+        color: #fff;
+        padding: 15px 0;
+        font-family: Arial, sans-serif;
+        position: relative;
+        z-index: 999;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+
+    /* barra fina verde logo abaixo */
+    .top-offer-bar::after {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: #00ff00;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+    .offer-content {
+        max-width: 700px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .offer-text strong {
+        font-size: 18px;
+        color: #00ff00;
+        display: block;
+    }
+
+    .offer-text span {
+        font-size: 14px;
+        color: #ccc;
+    }
+    .countdown {
+        display: flex;
+        gap: 15px;
+    }
+    .countdown div {
+        background-color: #222;
+        padding: 8px 12px;
+        border-radius: 6px;
+        text-align: center;
+        min-width: 50px;
+    }
+
+    .countdown span {
+        font-size: 18px;
+        font-weight: bold;
+        display: block;
+        color: #00ff00;
+    }
+
+    .countdown small {
+        font-size: 12px;
+        color: #bbb;
+    }
+
+    .footer-copy {
+  margin-top: 15px;
+  color: #666666;
+    }
+    
+/*LOGO*/   
+.offer-logo img {
+  height: 40px;
+  max-width: 120px;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  left: -10px; /* move para a esquerda */
+}
+
