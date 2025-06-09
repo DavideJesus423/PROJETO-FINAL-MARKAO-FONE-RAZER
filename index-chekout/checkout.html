@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout Razer Style</title>
+  <script src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+  </style>
+</head>
+<body>
+
+    <!--
+    ============================================= 
+                CRONOMETRO - CONTAGEM
+     ============================================
+    -->    
+  <div href="#" class="top-offer-bar">
+    <div class="offer-content">
+      <!-- LOGO À ESQUERDA -->
+    <div class="offer-logo">
+      <a href="../index.html"><img src="../imagens/Logo_Razer_2017.png" alt="Logo da Razer Store" /></a>
+    </div>
+      <!-- TEXTO DA OFERTA -->
+      <div class="offer-text">
+        <strong>OFERTA EXCLUSIVA</strong>
+        <span>Headsets Razer com até 25% OFF — só hoje!</span>
+      </div>
+
+      <!-- CONTAGEM REGRESSIVA -->
+      <div class="countdown">
+        <div><span id="days">01</span><small>Dia</small></div>
+        <div><span id="hours">12</span><small>Horas</small></div>
+        <div><span id="minutes">30</span><small>Min</small></div>
+        <div><span id="seconds">45</span><small>Seg</small></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <!-- SEÇÃO DE FORMULÁRIO -->
+    <div class="form-section">
+      <h2>Dados Pessoais</h2>
+      <!-- email do cliente -->
+      <label for="email">E-mail*</label>
+      <input type="email" id="email" />
+
+      <!-- nome compoleto do cliente -->
+      <label for="nome">Nome completo*</label>
+      <input type="text" id="nome" />
+
+      <div class="row">
+        <!-- celular do cliente -->
+        <div>
+          <label for="celular">Celular*</label>
+          <input type="tel" id="celular" />
+        </div>
+        <!-- cpf do cliente -->
+        <div>
+          <label for="cpf">CPF*</label>
+          <input type="text" id="cpf" />
+        </div>
+      </div>
+
+      <h2>Endereço de Entrega</h2>
+      <!-- CEP para buscar o resto, mas usuário preenche tudo depois -->
+      <label for="cep">CEP*</label>
+      <input type="text" id="cep" />
+
+      <!-- rua do cliente -->
+      <label for="rua">Rua*</label>
+      <input type="text" id="rua" />
+
+      <div class="row">
+        <!-- número da residência -->
+        <div>
+          <label for="numero">Nº*</label>
+          <input type="text" id="numero" />
+        </div>
+        <!-- complemento (quadra, loja etc) -->
+        <div>
+          <label for="complemento">complemento</label>
+          <input type="text" id="complemento" />
+        </div>
+      </div>
+
+      <!-- bairro, cidade e estado -->
+      <label for="bairro">Bairro*</label>
+      <input type="text" id="bairro" />
+
+      <div class="row">
+        <div>
+          <label for="cidade">Cidade*</label>
+          <input type="text" id="cidade" />
+        </div>
+        <div>
+          <label for="estado">Estado*</label>
+          <select id="estado">
+            <option value="">Selecione</option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MT">MT</option>
+            <option value="MS">MS</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS">RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+          </select>
+        </div>
+      </div>
+
+      <h2>Pagamento</h2>
+      <!-- opçoes de pagmanto -->
+      <div class="payment-options">
+        <label class="payment-option selected" id="opt-pix">
+          <input type="radio" name="pagamento" value="pix" checked />
+          <img src="../imagens/pix.png" alt="Pix" /> Pix
+        </label>
+        <label class="payment-option" id="opt-boleto">
+          <input type="radio" name="pagamento" value="boleto" />
+          <img src="../imagens/boleto.png" alt="Boleto" /> Boleto
+        </label>
+        <label class="payment-option" id="opt-cartao">
+          <input type="radio" name="pagamento" value="cartao" />
+          <img src="../imagens/visa.png" alt="Visa" />
+          <img src="../imagens/mastercard.png" alt="MasterCard" /> Cartões
+        </label>
+      </div>
+
+      <!-- campos do pix e boleto -->
+      <div id="pix-boleto-container">
+        <!-- pix -->
+        <div id="pix-fields">
+          <label>Código Pix</label>
+          <input type="text" value="00020126440014br.gov.bcb.pix..." readonly />
+          <img src="../imagens/qrcode-fake.png" alt="QR Pix" class="qrcode" />
+          <button onclick="copiarPix()" class="buy-button" style="margin-top:10px;">
+            📋 Copiar Código Pix
+          </button>
+        </div>
+
+        <!-- boleto -->
+        <div id="boleto-fields" style="display:none;">
+          <button class="generate-boleto">📄 Gerar Boleto</button>
+        </div>
+      </div>
+
+      <!-- campos do cartão (ocultos) -->
+      <div id="cartao-fields">
+        <!-- nome impresso no cartao -->
+        <label for="cartao-nome">Nome impresso no cartão</label>
+        <input type="text" id="cartao-nome" />
+
+        <!-- numero do cartão -->
+        <label for="cartao-numero">Número do cartão</label>
+        <input type="text" id="cartao-numero" />
+
+        <div class="row">
+          <!-- validade do cartao -->
+          <div>
+            <label for="cartao-validade">Validade (MM/AA)</label>
+            <input type="text" id="cartao-validade" placeholder="MM/AA" />
+          </div>
+          <!-- cvv do cartao -->
+          <div>
+            <label for="cartao-cvv">CVV</label>
+            <input type="text" id="cartao-cvv" maxlength="3" />
+          </div>
+        </div>
+
+        <!-- seleciona parcela -->
+        <label for="parcelas" style="margin-top: 12px;">Parcelamento</label>
+        <select id="parcelas" onchange="atualizarTotais()">
+          <option value="1">1x de R$ 289,90 sem juros</option>
+          <option value="2">2x de R$ 144,95 sem juros</option>
+          <option value="3">3x de R$ 96,63 sem juros</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- SEÇÃO DE RESUMO -->
+    <div class="summary-section">
+      <h2>Resumo do Pedido</h2>
+
+      <!-- resumo do produto -->
+      <div class="product-summary">
+        <img src="../imagens/black-shark3-removebg-preview.png" alt="Produto" />
+        <div>
+          <p>RAZER BLACKSHARK V2</p>
+          <strong id="preco-unitario" style="color:#44d62c;">R$ 289,90</strong>
+        </div>
+      </div>
+
+      <!-- caixa de desconto (exemplo) -->
+      <div class="discount-box">
+        Primeira compra? Use o cupom <strong>RAZER10</strong> e ganhe 10% OFF
+      </div>
+      
+
+      <!-- totais -->
+      <div class="totals">
+        
+        <p>Subtotal: <span id="subtotal">R$ 289,90</span></p>
+        <p>Entrega: <span id="entrega">R$ 00,00</span></p>
+
+        
+        <!-- campo do cupom no resumo -->
+        <div class="cupom-summary">
+          <div class="cupom-input-container">
+            <input type="text" id="cupom-input-summary" placeholder="Digite o cupom aqui" />
+            <button type="button" class="cupom-button" onclick="aplicarCupom()">Aplicar Cupom</button>
+          </div>
+          <div id="cupom-feedback-summary"></div>
+        </div>
+                      <!-- cores -->
+    <!--<h2>Escolha uma cor para o fundo (clicando na imagem)</h2>-->
+        <img src="../imagens/carrossel2/cores/preto.png" alt="Azul" class="color-image" />
+        <img src="../imagens/carrossel2/cores/verde.png" alt="Vermelho" class="color-image" />
+        <img src="../imagens/carrossel2/cores/branco.png" alt="Verde" class="color-image" />
+
+        <p><strong>Total: <span id="total">R$ 289,90</span></strong></p>
+
+        <!-- controle de quatidade no resumo -->
+        <div class="quantity-summary-control">
+          <button type="button" onclick="alterarQuantidade(-1)">−</button>
+          <span id="quantidade-summary">1</span>
+          <button type="button" onclick="alterarQuantidade(1)">+</button>
+        </div>
+        <!-- botao comprar -->
+        <button class="buy-button">Comprar</button>
+      </div>
+    </div>
+  </div>
+    <!--=======================================
+        PARTE DE BAIXO/CARTÃO/CONFIANÇA
+    ======================================-->
+    <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <img src="imagens/Logo_Razer_2017.png" alt="LogoRazer" class="logo">
+      <h4>ATENDIMENTO AO CLIENTE</h4>
+      <p><strong>E-mail:</strong> atendimento@zedamanga.com</p>
+      <p><strong>WhatsApp:</strong> +55 (99) 9 9999-9999</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>RODAPÉ</h4>
+      <ul>
+        <li><a href="../rodapé/quem-somos.html">Quem Somos</a></li>
+        <li><a href="../rodapé/Políticas-de-privacidade.html">Políticas de privacidade</a></li>
+        <li><a href="../rodapé/Políticas-de-devolução.html">Políticas de devolução</a></li>
+        <li><a href="../rodapé/Termos-de-uso.html">Termos de uso</a></li>
+        <li><a href="../rodapé/Contato.html">Contato</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>MENU PRINCIPAL</h4>
+      <ul>
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="../index.html">Catálogo</a></li>
+        <li><a href="../rodapé/Contato.html">Contato</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>NOSSA NEWSLETTER</h4>
+      <p>Assine nossa newsletter e receba as melhores ofertas DE GRAÇA!</p>
+      <form>
+        <input type="email" placeholder="Seu e-mail" required>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      Preços e condições de pagamento exclusivos para compras neste site oficial, podendo variar com o tempo da oferta.
+      Evite comprar produtos mais baratos ou de outras lojas, pois você pode estar sendo enganado(a) por um golpista.
+      Caso você compre os mesmos produtos em outras lojas, não nos responsabilizamos por quaisquer problemas.
+    </p>
+    <br>
+    <div class="payment-methods">
+      <img src="imagens/pix.png" alt="Pix">
+      <img src="imagens/visa.png" alt="Visa">
+      <img src="imagens/mastercard.png" alt="Mastercard">
+      <img src="imagens/elo.png" alt="Elo">
+      <img src="imagens/boleto.png" alt="Boleto">
+      <img src="imagens/gpay.png" alt="Gplay">
+    </div>
+
+    <!--
+    <div class="footer-certifications">
+      <img src="norton.png" alt="Norton">
+      <img src="reclameaqui.png" alt="ReclameAqui">
+      <img src="google.png" alt="Google Site Seguro">
+    </div> 
+    -->
+    <p class="footer-copy">
+      RAZER™ |  CNPJ 53.791.552/0001-21
+    </p>
+  </div>
+</footer>
+
+<!--==============================================================================
+Script Abaixo e relaciona ao chekout e não ao cronometro e a barra de certficação
+=================================================================================-->
+
+<script>
+      // variaveus globais
+    const paymentOptions = document.querySelectorAll('.payment-option');
+    const pixFields = document.getElementById('pix-fields');
+    const boletoFields = document.getElementById('boleto-fields');
+    const cartaoFields = document.getElementById('cartao-fields');
+    const parcelasSelect = document.getElementById('parcelas');
+
+    const cupomInputSummary = document.getElementById('cupom-input-summary');
+    const cupomFeedbackSummary = document.getElementById('cupom-feedback-summary');
+
+    const precoUnitario = 289.90;   // preço normal do produto (cartão)
+    const precoVista = 250.00;      // preço no pix ou boleto
+    let quantidade = 1;             // quantidade inicial
+    let descontoAtivo = 0;          // sem desconto no começo
+
+    // atualiza valores do subtotal, total e parcelas
+    function atualizarTotais() {
+      const pagamento = document.querySelector('input[name="pagamento"]:checked').value;
+      const parcelas = parcelasSelect ? parseInt(parcelasSelect.value) : 1;
+
+      // define subtotal: cartão 289,90; pix/boleto 250,00
+      let subtotal = (pagamento === 'cartao' ? precoUnitario : precoVista) * quantidade;
+      let total = subtotal * (1 - descontoAtivo);
+
+      // se for cartão, ajusta texto das opções de parcelamento
+      if (pagamento === 'cartao' && parcelasSelect) {
+        for (let i = 1; i <= 3; i++) {
+          const option = parcelasSelect.options[i - 1];
+          const valorParcela = ((subtotal * (1 - descontoAtivo)) / i)
+            .toFixed(2)
+            .replace('.', ',');
+          option.text = `${i}x de R$ ${valorParcela} sem juros`;
+        }
+      }
+
+      document.getElementById('subtotal').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+      document.getElementById('total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+      document.getElementById('preco-unitario').textContent = `R$ ${((pagamento === 'cartao') ? precoUnitario : precoVista).toFixed(2).replace('.', ',')}`;
+      document.getElementById('quantidade-summary').textContent = quantidade;
+    }
+
+    // altera quantidade e atualiza valores
+    function alterarQuantidade(delta) {
+      quantidade += delta;
+      if (quantidade < 1) quantidade = 1;
+      atualizarTotais();
+    }
+
+    // seleciona forma de pagamento e mostra campos corretos
+    paymentOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        paymentOptions.forEach(opt => opt.classList.remove('selected'));
+        option.classList.add('selected');
+
+        const valor = option.querySelector('input').value;
+        if (valor === 'pix') {
+          pixFields.style.display = 'block';
+          boletoFields.style.display = 'none';
+          cartaoFields.style.display = 'none';
+        } else if (valor === 'boleto') {
+          pixFields.style.display = 'none';
+          boletoFields.style.display = 'block';
+          cartaoFields.style.display = 'none';
+        } else {
+          pixFields.style.display = 'none';
+          boletoFields.style.display = 'none';
+          cartaoFields.style.display = 'block';
+        }
+        atualizarTotais();
+      });
+    });
+
+    // copia codigo pix para area de transferencia
+    function copiarPix() {
+      const codigoPix = pixFields.querySelector('input').value;
+      navigator.clipboard.writeText(codigoPix)
+        .then(() => alert('Código Pix copiado!'))
+        .catch(() => alert('Falha ao copiar o código Pix.'));
+    }
+
+    // aplica cupom e mostra feedback
+    function aplicarCupom() {
+      const cupom = cupomInputSummary.value.trim().toLowerCase();
+      if (cupom === 'razer10') {
+        descontoAtivo = 0.10; // 10% de desconto
+        cupomFeedbackSummary.textContent = 'Cupom aplicado! 10% de desconto.';
+        cupomFeedbackSummary.className = 'success';
+      } else {
+        descontoAtivo = 0;
+        cupomFeedbackSummary.textContent = 'Cupom inválido.';
+        cupomFeedbackSummary.className = 'error';
+      }
+      atualizarTotais();
+    }
+
+    // inicializa valores ao carregar
+    atualizarTotais();
+
+    const images = document.querySelectorAll('.color-image');
+
+images.forEach(img => {
+  img.addEventListener('click', () => {
+    images.forEach(i => i.classList.remove('selected'));
+    img.classList.add('selected');
+    });
+  });
+
+</script>
+</body>
+</html>
